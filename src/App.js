@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import './App.css';
-import TeamMate from './components/teamMate'
-import Form from './components/form'
+import TeamMate from './components/teamMate';
+import Form from './components/form';
+
 
 // Shape of state driving the form
 const initialFormValues = {
@@ -33,7 +33,10 @@ function App() {
     };
     // if a field is empty don't let it post to back end.
     if (!newTeamMate.name || !newTeamMate.email || !newTeamMate.role) return;
-  }
+
+    setTeamMembers([...teamMembers, newTeamMate]);
+    setFormValues(initialFormValues);
+  };
 
   return (
     <div className="App">
@@ -45,8 +48,8 @@ function App() {
         submit={submitForm}
       />
 
-      {teamMembers.map((teamMate) => {
-        return <TeamMate key={teamMate.id} details={teamMate} />
+      {teamMembers.map((teamMate, idx) => {
+        return <TeamMate key={idx} details={teamMate} />
       })}
 
     </div>
