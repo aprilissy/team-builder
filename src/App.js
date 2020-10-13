@@ -10,6 +10,7 @@ function App() {
     <div className="App">
       <header className="App-header">
       </header>
+      <Form />
       {teamMembers.map((teamMate) => {
         return <TeamMate key={teamMate.id} details={teamMate} />
       })}
